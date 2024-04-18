@@ -1,0 +1,23 @@
+<div class="w-full h-fit flex bg-slate-100">
+    <div class="w-1/6 h-screen bg-white border-r-2 border-black">
+
+    </div>
+
+    <div class="w-full flex gap-5 mt-5">
+        <div class="w-3/5 mb-2">
+            <div class="w-11/12 h-fit mx-auto">
+                <div class="mb-5">
+                    <span class="text-slate-600 text-xl">Últimos posts</span>
+                </div>
+                <app-post *ngFor="let post of posts" [post]="post"></app-post>
+            </div>
+        </div>
+        <div class="w-2/5">
+            <div class="w-11/12 h-fit mx-auto">
+                <div class="mb-5">
+                    <span class="text-slate-600 text-xl">Últimas atividades</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

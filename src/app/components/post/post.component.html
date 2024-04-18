@@ -1,0 +1,17 @@
+<div class="w-full h-fit p-5 rounded-lg shadow-md bg-white">
+    <p class="text-gray-700">{{ post.text }}</p>
+    <div class="w-full h-full flex justify-around mt-3">
+        <div class="w-full flex items-center gap-2">
+            <img [src]="post.author.userPicUrl" alt="Imagem do usuário" class="rounded-full w-14 h-14 object-cover">
+            <div>
+                <!--colocar um routerLink com queryParam do user-->
+                <span class="text-blue-400 font-bold" [routerLink]="['user']">{{ post.author.name }}</span>
+            </div>
+        </div>
+        <div class="w-full h-12 flex justify-end items-end">
+            <div class="w-fit">
+                <span class="text-gray-400">{{ post.createdAt | date:'dd/MM/yyyy HH:mm'}}</span>
+            </div>
+        </div>
+    </div>
+</div>
