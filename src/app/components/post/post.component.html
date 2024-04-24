@@ -1,6 +1,5 @@
 <div class="w-full h-fit p-5 rounded-lg shadow-md bg-white">
-    <p class="text-gray-700">{{ post.text }}</p>
-    <div class="w-full h-full flex justify-around mt-3">
+    <div class="w-full h-full flex justify-around mt-1 mb-3">
         <div class="w-full flex items-center gap-2">
             <img [src]="post.author.userPicUrl" alt="Imagem do usuário" class="rounded-full w-14 h-14 object-cover">
             <div>
@@ -12,6 +11,23 @@
             <div class="w-fit">
                 <span class="text-gray-400">{{ post.createdAt | date:'dd/MM/yyyy HH:mm'}}</span>
             </div>
+        </div>
+    </div>
+    <p class="text-gray-700">{{ post.text }}</p>
+    <div class="p-2 px-4 flex justify-between mx-4 border-t border-gray-300 mt-2">
+        <div class="flex gap-2 items-center">
+            <i class="ph ph-heart text-xl"></i>
+            <span>Curtir</span>
+        </div>
+
+        <div class="flex gap-2 items-center">
+            <i class="ph ph-chat-circle-dots text-xl"></i>
+            <span>Comentar</span>
+        </div>
+
+        <div class="flex gap-2 items-center">
+            <i class="ph ph-share-fat text-xl"></i>
+            <span>Compartilhar</span>
         </div>
     </div>
 </div>

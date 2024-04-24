@@ -1,19 +1,42 @@
-<div class="w-full h-fit flex bg-slate-100">
-    <div class="w-1/6 h-screen bg-white border-r-2 border-black">
+<div class="w-full h-fit flex bg-gray-200">
+    <div class="w-1/6 h-screen ml-6">
+        <div class="w-full h-2/4 bg-white mt-5 p-5 rounded-lg shadow-md">
+            <span class="text-slate-600 text-xl">MENU / PERFIL / PROGRESSO</span>
+        </div>
 
+        <div class="w-full h-1/4 bg-white mt-5 p-5 rounded-lg shadow-md">
+            <span class="text-slate-600 text-xl">COMUNIDADE / GRUPOS / TAGS</span>
+        </div>
     </div>
 
     <div class="w-full flex gap-5 mt-5">
         <div class="w-3/5 mb-2">
             <div class="w-11/12 h-fit mx-auto">
-                <div class="mb-5">
+                <div>
+                    <div class="w-full h-fit p-5 rounded-lg shadow-md bg-white">
+                        <div class="w-full h-full flex justify-around items-center mt-1 mb-3">
+                            <img src="https://www.otempo.com.br/image/contentid/policy:1.3307636:1704726500/Davi-Brito-do-Puxadinho-do-BBB-24-png.png"
+                                alt="Imagem do usuário" class="rounded-full w-14 h-14 object-cover">
+                            <div class="w-11/12 h-12 border-2 border-gray-500 rounded-full flex items-center pl-4">
+                                <span class="text-gray-500 text-lg">Compartlhe seus conhecimentos!</span>
+                            </div>
+                        </div>
+                        <div class="w-full flex justify-end text-gray-600">
+                            <div class="flex gap-1 items-center mr-4">
+                                <i class="ph ph-image text-xl"></i>
+                                <span>Mídia</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 mb-3">
                     <span class="text-slate-600 text-xl">Últimos posts</span>
                 </div>
                 <app-post *ngFor="let post of posts" [post]="post"></app-post>
             </div>
         </div>
         <div class="w-2/5">
-            <div class="w-11/12 h-fit mx-auto">
+            <div class="w-11/12 h-fit mx-auto mt-5 bg-white p-5 rounded-lg shadow-md">
                 <div class="mb-5">
                     <span class="text-slate-600 text-xl">Últimas atividades</span>
                 </div>
