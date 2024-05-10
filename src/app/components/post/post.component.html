@@ -1,7 +1,7 @@
 <div class="w-full h-fit p-5 rounded-lg shadow-md bg-white">
     <div class="w-full h-full flex justify-around mt-1 mb-3">
         <div class="w-full flex items-center gap-2">
-            <img [src]="post.author.userPicUrl" alt="Imagem do usuário" class="rounded-full w-14 h-14 object-cover">
+            <img [src]="post.author.imageUrl" alt="Imagem do usuário" class="rounded-full w-14 h-14 object-cover">
             <div>
                 <!--colocar um routerLink com queryParam do user-->
                 <span class="text-blue-400 font-bold" [routerLink]="['user']">{{ post.author.name }}</span>

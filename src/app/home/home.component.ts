@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
     {
       author: {
         name: 'Mark Zuckerberg',
-        userPicUrl: 'https://classic.exame.com/wp-content/uploads/2024/01/GettyImages-1693797798.jpg?quality=70&strip=info'
+        imageUrl: 'https://classic.exame.com/wp-content/uploads/2024/01/GettyImages-1693797798.jpg?quality=70&strip=info'
       },
       createdAt: new Date(),
       interests: 1,

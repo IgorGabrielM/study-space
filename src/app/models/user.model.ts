@@ -1,5 +1,13 @@
 export class UserModel {
-    id?: string;
-    name: string;
-    userPicUrl: string;
+    name: string
+    email?: string
+    password?: string
+    imageUrl?: string
+    bio?: string
+    birthdate?: Date
+    createdAt?: Date
+    idRole?: number
+    gender?: string
+    interests?: number[]
+    posts?: number[]
 }

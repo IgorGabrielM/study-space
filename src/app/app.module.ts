@@ -6,17 +6,27 @@ import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
 import { HomeModule } from './home/home.module';
 import { UserModule } from './user/user.module';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
+    SignUpComponent,
+    SignInComponent,
+    SignUpComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HomeModule,
     UserModule,
-    ComponentsModule
+    HttpClientModule,
+    ComponentsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
