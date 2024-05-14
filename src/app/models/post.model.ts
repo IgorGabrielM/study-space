@@ -1,12 +1,17 @@
+import { InterestModel } from "./interest.model";
 import { UserModel } from "./user.model";
 
 export class PostModel {
-    id?: string;
-    createdAt: Date;
-    text: string;
-    likesCount: number;
+    idPost?: number;
+    title: string;
+    text?: string;
+    imageUrl?: string;
+    likesCount?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+    userId?: number;
+    insterestsId?: number[];
+    interests?: InterestModel[];
+    user?: UserModel;
     commentsCount: number;
-    imagePosterUrl: string;
-    interests: number
-    author: UserModel
 }

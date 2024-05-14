@@ -7,19 +7,19 @@ import { UserModel } from '../models/user.model';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
-export class SignUpComponent implements OnInit{
+export class SignUpComponent implements OnInit {
   user: UserModel
 
   constructor(
     private authService: AuthService
-  ){}
+  ) { }
 
   ngOnInit(): void {
     this.user = new UserModel
+    this.user.gender = '1'
   }
 
-  onSubmit(){
-    console.log(this.user)
+  onSubmit() {
     this.authService.createUser({
       ...this.user,
       idRole: 0,
@@ -31,7 +31,7 @@ export class SignUpComponent implements OnInit{
       posts: [
         0
       ]
-    }).then((res) => {console.log(res)})
+    }).then((res) => { console.log(res) })
   }
 
 }

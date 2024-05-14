@@ -1,0 +1,18 @@
+<div class="p-3">
+    <span class="text-gray-800 font-bold text-md">Comentário</span>
+    <textarea class="w-full p-2 border border-gray-400 shadow-md rounded-md" type="text" [(ngModel)]="commentText"
+        rows="5"></textarea>
+    <div class="w-full flex gap-2 justify-end">
+        <button class="flex gap-2 bg-red-500 text-white justify-center items-center px-2 py-1 rounded-md shadow-lg mt-2"
+            (click)="closeDialog()">
+            <i class="ph ph-bold ph-trash"></i>
+            <span class="font-bold">Cancelar</span>
+        </button>
+        <button
+            class="flex gap-2 bg-blue-500 text-white justify-center items-center px-2 py-1 rounded-md shadow-lg mt-2 disabled:bg-blue-300"
+            (click)="comment()" [disabled]="!(commentText && commentText.length > 0)">
+            <i class="ph ph-bold ph-paper-plane-tilt"></i>
+            <span class="font-bold">Enviar</span>
+        </button>
+    </div>
+</div>

@@ -13,22 +13,7 @@ export class UserComponent {
     imageUrl: 'https://classic.exame.com/wp-content/uploads/2024/01/GettyImages-1693797798.jpg?quality=70&strip=info'
   }
 
-  posts: PostModel[] = [
-    {
-      author: {
-        name: 'Mark Zuckerberg',
-        imageUrl: 'https://classic.exame.com/wp-content/uploads/2024/01/GettyImages-1693797798.jpg?quality=70&strip=info'
-      },
-      createdAt: new Date(),
-      interests: 1,
-      commentsCount: 0,
-      likesCount: 5,
-      imagePosterUrl: '',
-      text: `Inteligência Artificial (IA) é um campo da ciência da computação que se  concentra no desenvolvimento
-       de sistemas capazes de realizar tarefas  que, normalmente, requerem inteligência humana.
-        Essas tarefas incluem  desde reconhecimento de padrões até tomada de decisões complexas. As  aplicações da IA são vastas e estão...`
-    }
-  ];
+  posts: PostModel[] = [];
 
   daysActivities = []
 
