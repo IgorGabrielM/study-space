@@ -14,9 +14,7 @@ export class InterestService {
   async createPost(payload: InterestModel): Promise<void> {
     try {
       const response = await this.http.post<InterestModel>('http://localhost:3000/interests', payload).toPromise();
-      console.log('Resposta da API:', response);
     } catch (error) {
-      console.error('Erro:', error);
     }
   }
 
@@ -24,7 +22,14 @@ export class InterestService {
     try {
       return await this.http.get<InterestModel[]>('http://localhost:3000/interests').toPromise();
     } catch (error) {
-      console.error('Erro:', error);
+      return Promise.reject(error);
+    }
+  }
+
+  async find(id: number): Promise<InterestModel> {
+    try {
+      return await this.http.get<InterestModel>(`http://localhost:3000/interests/${id}`).toPromise();
+    } catch (error) {
       return Promise.reject(error);
     }
   }

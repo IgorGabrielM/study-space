@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { PostModel } from '../models/post.model';
 import { UserModel } from '../models/user.model';
+import { InterestService } from '../services/insterest.service';
+import { InterestModel } from '../models/interest.model';
 
 @Component({
   selector: 'app-user',
@@ -15,10 +17,25 @@ export class UserComponent {
 
   posts: PostModel[] = [];
 
-  daysActivities = []
+  daysActivities = [];
 
-  constructor() { }
+  interests: InterestModel[] = [];
 
-  ngOnInit() { }
+  constructor(
+    private interestService: InterestService
+  ) { }
+
+  ngOnInit() {
+    this.user.interests = this.user.interests ? this.user.interests : []
+    this.loadInterests();
+  }
+
+  async loadInterests() {
+    const interestPromises = this.user.interests.map((int) => {
+      return this.interestService.find(int);
+    });
+
+    this.interests = await Promise.all(interestPromises);
+  }
 
 }

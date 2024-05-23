@@ -14,18 +14,14 @@ export class CommentsService {
   async create(payload: CommentModel): Promise<void> {
     try {
       const response = await this.http.post<CommentModel>('http://localhost:3000/post-comments', payload).toPromise();
-      console.log('Resposta da API:', response);
     } catch (error) {
-      console.error('Erro:', error);
     }
   }
 
   async list(): Promise<void> {
     try {
       const response = await this.http.get<CommentModel>('http://localhost:3000/posts').toPromise();
-      console.log('Resposta da API:', response);
     } catch (error) {
-      console.error('Erro:', error);
     }
   }
 

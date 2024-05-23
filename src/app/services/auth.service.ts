@@ -14,9 +14,7 @@ export class AuthService {
   async createUser(payload: UserModel): Promise<void> {
     try {
       const response = await this.http.post<UserModel>('http://localhost:3000/users', payload).toPromise();
-      console.log('Resposta da API:', response);
     } catch (error) {
-      console.error('Erro:', error);
     }
   }
 

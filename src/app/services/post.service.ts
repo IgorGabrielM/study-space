@@ -14,7 +14,6 @@ export class PostService {
   async createPost(payload: PostModel): Promise<void> {
     try {
       const response = await this.http.post<PostModel>('http://localhost:3000/posts', payload).toPromise();
-      console.log('Resposta da API:', response);
     } catch (error) {
       console.error('Erro:', error);
     }

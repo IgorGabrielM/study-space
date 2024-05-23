@@ -35,7 +35,6 @@ export class DialogPostComponent implements OnInit {
     this.interestService.list().then((res) => {
       this.interests = res
       this.filteredInterests = res
-      console.log(res)
     });
   }
 
@@ -43,10 +42,9 @@ export class DialogPostComponent implements OnInit {
     this.dialogRef.close();
   }
 
-
   search() {
     if (this.searchText.trim() === '') {
-      this.filteredInterests = this.interests; // Se a barra de pesquisa estiver vazia, exiba todos os interesses
+      this.filteredInterests = this.interests;
     } else {
       this.filteredInterests = this.interests.filter(interest =>
         interest.text.toLowerCase().includes(this.searchText.toLowerCase())
@@ -72,7 +70,6 @@ export class DialogPostComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.post)
   }
 
   setInterest(event: any) {
@@ -85,7 +82,6 @@ export class DialogPostComponent implements OnInit {
         this.post.insterestsId.splice(index, 1);
       }
     }
-    console.log('Interesses selecionados:', this.post.insterestsId);
   }
 
   verifyCheck(id: number): boolean {
