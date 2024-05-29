@@ -13,7 +13,7 @@ export class HeaderComponent {
   ) { }
 
   verifyNotShow() {
-    if (this.router.routerState.snapshot.url === '/sign-up') {
+    if (this.router.routerState.snapshot.url === '/sign-up' || this.router.routerState.snapshot.url === '/sign-in') {
       return false;
     } else {
       return true;

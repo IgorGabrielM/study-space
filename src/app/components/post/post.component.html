@@ -1,7 +1,11 @@
 <div class="w-full h-fit p-5 rounded-lg shadow-md bg-white">
     <div class="w-full h-full flex justify-around mt-1 mb-3">
         <div class="w-full flex items-center gap-2">
-            <img [src]="post.user.imageUrl" alt="Imagem do usuário" class="rounded-full w-14 h-14 object-cover">
+            <img *ngIf="post.user.imageUrl.length > 0" [src]="post.user.imageUrl" alt="Imagem do usuário"
+                class="rounded-full w-14 h-14 object-cover">
+            <img *ngIf="post.user.imageUrl.length == 0"
+                src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
+                alt="Imagem do usuário" class="rounded-full w-14 h-14 object-cover">
             <div>
                 <!--colocar um routerLink com queryParam do user-->
                 <span class="text-blue-400 font-bold" [routerLink]="['user']">{{ post.user.name }}</span>
@@ -27,9 +31,9 @@
             <span>Curtir</span>
         </div>
 
-        <div class="flex gap-2 items-center relative" (click)="openCommentDialog()">
+        <div class="flex gap-2 items-center relative" (click)="openComment(post.idPost)">
             <i class="ph ph-chat-circle-dots text-xl"></i>
-            <span>Comentar</span>
+            <span>Comentarios</span>
             <div
                 class="w-5 h-5 flex justify-center items-center text-sm rounded-full bg-blue-500 absolute top-0 -right-6">
                 <span class="text-white">
@@ -41,6 +45,16 @@
         <div class="flex gap-2 items-center">
             <i class="ph ph-share-fat text-xl"></i>
             <span>Compartilhar</span>
+        </div>
+    </div>
+
+    <div *ngIf="commentIsOpen">
+        <div class="bg-blue-500 px-2 py-1 text-white font-bold w-fit rounded-md mb-2" (click)="openCommentDialog()">
+            Comentar
+        </div>
+
+        <div *ngFor="let comment of post.comments" class="w-full my-1 py-1 border-t border-gray-500">
+            <span class="text-gray-500">{{ comment.text }}</span>
         </div>
     </div>
 </div>

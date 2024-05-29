@@ -6,7 +6,7 @@
             type="text" [(ngModel)]="post.title">
 
         <textarea class="w-full p-2 border border-gray-400 shadow-sm rounded-md" type="text" rows="5"
-            placeholder="Compartilhe seus conhecimentos" [(ngModel)]="post.text"></textarea>
+            placeholder="Compartilhe seus conhecimentos" [(ngModel)]="post.text" [maxlength]="280"></textarea>
 
         <div>
             <div class="p-3">

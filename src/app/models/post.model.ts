@@ -1,3 +1,4 @@
+import { CommentModel } from "./comment.model";
 import { InterestModel } from "./interest.model";
 import { UserModel } from "./user.model";
 
@@ -14,4 +15,5 @@ export class PostModel {
     interests?: InterestModel[];
     user?: UserModel;
     commentsCount: number;
+    comments: CommentModel[];
 }

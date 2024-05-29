@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { UserModel } from '../models/user.model';
 import { InterestService } from '../services/insterest.service';
 import { InterestModel } from '../models/interest.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,7 +20,8 @@ export class SignUpComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private interestService: InterestService
+    private interestService: InterestService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -62,7 +64,6 @@ export class SignUpComponent implements OnInit {
     return this.user.interests.find((interest) => interest === id) ? true : false;
   }
 
-
   onSubmit() {
     this.authService.createUser({
       ...this.user,
@@ -75,7 +76,9 @@ export class SignUpComponent implements OnInit {
       posts: [
         0
       ]
-    }).then((res) => { })
+    }).then((res) => {
+      this.router.navigate(['../sign-in'])
+    })
   }
 
 }

@@ -1,7 +1,14 @@
 <div class="w-full h-fit flex bg-gray-200">
-    <div class="w-1/6 h-screen ml-6">
-        <div class="w-full h-2/4 bg-white mt-5 p-5 rounded-lg shadow-md">
-            <span class="text-slate-600 text-xl">MENU / PERFIL / PROGRESSO</span>
+    <div class="w-2/6 h-screen ml-6">
+        <div class="w-full h-fit bg-white mt-5 p-5 rounded-lg shadow-md">
+            <span class="text-slate-600 text-xl">Interesses</span>
+            <div class="flex flex-wrap gap-1">
+                <div class="w-fit py-1 text-white bg-blue-600 px-1 rounded-md" *ngFor="let int of interests"
+                    (click)="filterPostsByInterests(int.idInterest)">
+                    <span class="mr-2">{{ int.text }}</span>
+                    <span class="px-1  bg-white rounded-md text-blue-800 font-bold">{{ int?.posts?.length }}</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -25,8 +32,20 @@
                     <span class="text-slate-600 text-xl">Últimos posts</span>
                 </div>
 
-                <div class="w-full flex flex-col gap-5">
-                    <app-post *ngFor="let post of posts" [post]="post"></app-post>
+                <div class="w-full">
+                    <div class="w-full flex flex-col gap-5" *ngIf="!interestSelected">
+                        <app-post *ngFor="let post of posts" [post]="post"></app-post>
+                    </div>
+                    <div *ngIf="interestSelected">
+                        <span (click)="interestSelected = null"
+                            class="w-fit h-fit px-2 py-1 border border-red-500 text-red-500 flex justify-center items-center gap-2 bg-white rounded-full mb-2">
+                            <i class="ph ph-bold ph-x-circle"></i> Remover filtro
+                        </span>
+                        <div *ngIf="interestSelected.posts && interestSelected.posts.length"
+                            class="w-full flex flex-col gap-5">
+                            <app-post *ngFor="let post of interestSelected.posts" [post]="post"></app-post>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

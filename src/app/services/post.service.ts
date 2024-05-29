@@ -28,4 +28,13 @@ export class PostService {
     }
   }
 
+  async find(id): Promise<PostModel> {
+    try {
+      return await this.http.get<PostModel>(`http://localhost:3000/posts/${id}`).toPromise();
+    } catch (error) {
+      console.error('Erro:', error);
+      return Promise.reject(error);
+    }
+  }
+
 }
