@@ -15,7 +15,6 @@ export class PostService {
     try {
       const response = await this.http.post<PostModel>('http://localhost:3000/posts', payload).toPromise();
     } catch (error) {
-      console.error('Erro:', error);
     }
   }
 
@@ -23,7 +22,6 @@ export class PostService {
     try {
       return await this.http.get<PostModel[]>('http://localhost:3000/posts').toPromise();
     } catch (error) {
-      console.error('Erro:', error);
       return Promise.reject(error);
     }
   }
@@ -32,8 +30,23 @@ export class PostService {
     try {
       return await this.http.get<PostModel>(`http://localhost:3000/posts/${id}`).toPromise();
     } catch (error) {
-      console.error('Erro:', error);
       return Promise.reject(error);
+    }
+  }
+
+  async addLike(payload: { idPost: number, idUser: number }): Promise<any> {
+    try {
+      const response = await this.http.post<PostModel>('http://localhost:3000/posts/post/addLike', payload).toPromise();
+      return response
+    } catch (error) {
+    }
+  }
+
+  async removeLike(payload: { idPost: number, idUser: number }): Promise<any> {
+    try {
+      const response = await this.http.post<PostModel>('http://localhost:3000/posts/post/removeLike', payload).toPromise();
+      return response
+    } catch (error) {
     }
   }
 

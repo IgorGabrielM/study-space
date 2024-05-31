@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   }
 
   loadPosts() {
-    this.postService.list().then((posts) => this.posts = posts)
+    this.postService.list().then((posts) => this.posts = posts.reverse())
   }
 
   loadInterests() {
@@ -42,6 +42,10 @@ export class HomeComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogPostComponent, {
       width: '600px',
     });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.loadPosts();
+    })
   }
 
   filterPostsByInterests(idInterest: number) {

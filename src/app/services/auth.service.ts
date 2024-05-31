@@ -31,11 +31,18 @@ export class AuthService {
     }
   }
 
+  async find(id): Promise<UserModel> {
+    try {
+      return await this.http.get<UserModel>(`http://localhost:3000/users/${id}`).toPromise();
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
   async isAuthenticated(): Promise<boolean> {
     try {
       const userToken = localStorage.getItem('userToken');
-      const jwtDecoded = jwtDecode(userToken)
-      return jwtDecode !== null;
+      return userToken === null || userToken === undefined ? false : true;
     } catch (error) {
       return false;
     }

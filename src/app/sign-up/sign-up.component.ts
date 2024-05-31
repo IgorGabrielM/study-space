@@ -73,9 +73,7 @@ export class SignUpComponent implements OnInit {
       interests: [
         0
       ],
-      posts: [
-        0
-      ]
+      posts: []
     }).then((res) => {
       this.router.navigate(['../sign-in'])
     })

@@ -3,6 +3,8 @@ import { PostModel } from '../models/post.model';
 import { UserModel } from '../models/user.model';
 import { InterestService } from '../services/insterest.service';
 import { InterestModel } from '../models/interest.model';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -10,10 +12,7 @@ import { InterestModel } from '../models/interest.model';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent {
-  user: UserModel = {
-    name: 'Mark Zuckerberg',
-    imageUrl: 'https://classic.exame.com/wp-content/uploads/2024/01/GettyImages-1693797798.jpg?quality=70&strip=info'
-  }
+  user: UserModel
 
   posts: PostModel[] = [];
 
@@ -22,20 +21,38 @@ export class UserComponent {
   interests: InterestModel[] = [];
 
   constructor(
-    private interestService: InterestService
+    private interestService: InterestService,
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    this.user.interests = this.user.interests ? this.user.interests : []
-    this.loadInterests();
+    this.loadUser();
   }
 
-  async loadInterests() {
-    const interestPromises = this.user.interests.map((int) => {
-      return this.interestService.find(int);
-    });
+  loadUser() {
+    const userToken = localStorage.getItem('userId');
+    this.authService.find(userToken).then(async (usr) => {
+      this.user = usr;
 
-    this.interests = await Promise.all(interestPromises);
+      this.user.posts = this.user.posts.map((post) => {
+        return {
+          ...post,
+          user: usr
+        }
+      })
+
+      const interestPromises = this.user.interests.map((int) => {
+        return this.interestService.find(int);
+      });
+
+      this.interests = await Promise.all(interestPromises);
+    })
   }
 
+  signOut() {
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userToken');
+    this.router.navigate(['../sign-in'])
+  }
 }

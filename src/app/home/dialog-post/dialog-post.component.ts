@@ -1,9 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DialogCommentComponent } from 'src/app/components/post/dialog-comment/dialog-comment.component';
 import { InterestModel } from 'src/app/models/interest.model';
 import { PostModel } from 'src/app/models/post.model';
 import { InterestService } from 'src/app/services/insterest.service';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-dialog-post',
@@ -22,7 +24,9 @@ export class DialogPostComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<DialogCommentComponent>,
-    private interestService: InterestService
+    private interestService: InterestService,
+    private postService: PostService,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
@@ -52,24 +56,36 @@ export class DialogPostComponent implements OnInit {
     }
   }
 
-  onFileSelected(event: Event) {
-    const target = event.target as HTMLInputElement;
-    const file: File | null = (target.files && target.files.length > 0) ? target.files[0] : null;
-
-    if (file) {
-      this.previewImage(file);
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      this.previewImage(input.files[0]);
     }
   }
 
-  previewImage(file: File) {
+  previewImage(file: File): void {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
       this.imageUrl = reader.result;
     };
+    reader.onerror = (error) => { };
   }
 
   onSubmit() {
+    const userId = Number(localStorage.getItem('userId'));
+
+    const payload = {
+      ...this.post,
+      imageUrl: this.imageUrl.toString(),
+      idUser: userId,
+      likesCount: 0,
+      commentsCount: 0
+    }
+
+    this.postService.createPost(payload).then(() => {
+      this.closeDialog();
+    })
   }
 
   setInterest(event: any) {

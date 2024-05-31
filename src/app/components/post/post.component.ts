@@ -3,6 +3,7 @@ import { PostModel } from 'src/app/models/post.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogCommentComponent } from './dialog-comment/dialog-comment.component';
 import { PostService } from 'src/app/services/post.service';
+import { UserModel } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-post',
@@ -15,12 +16,10 @@ export class PostComponent implements OnInit {
 
   constructor(
     private postService: PostService,
-
     public dialog: MatDialog
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   openCommentDialog(): void {
     const dialogRef = this.dialog.open(DialogCommentComponent, {
@@ -34,10 +33,37 @@ export class PostComponent implements OnInit {
   }
 
   openComment(idPost: number) {
-    this.commentIsOpen = true
+    this.commentIsOpen = !this.commentIsOpen
     this.postService.find(idPost).then((res) => {
       this.post = res
     })
+  }
+
+  addLike() {
+    if (this.isLiked()) {
+      const userId = Number(localStorage.getItem('userId'));
+      const payload = {
+        idPost: this.post.idPost,
+        idUser: userId
+      }
+      this.post.likes = this.post.likes.filter((like) => like.idUser !== userId);
+      this.postService.removeLike(payload)
+    } else {
+      const userId = Number(localStorage.getItem('userId'));
+      const payload = {
+        idPost: this.post.idPost,
+        idUser: userId
+      }
+      const user = new UserModel()
+      this.post.likes.push({ ...user, idUser: userId })
+      this.postService.addLike(payload).then()
+    }
+  }
+
+  isLiked(): boolean {
+    const userId = Number(localStorage.getItem('userId'));
+    const userLiked = this.post.likes.find((like) => like.idUser === userId)
+    return userLiked ? true : false
   }
 
 }

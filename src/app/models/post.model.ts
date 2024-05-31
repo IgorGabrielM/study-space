@@ -16,4 +16,5 @@ export class PostModel {
     user?: UserModel;
     commentsCount: number;
     comments: CommentModel[];
+    likes: UserModel[];
 }

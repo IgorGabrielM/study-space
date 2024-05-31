@@ -1,3 +1,5 @@
+import { PostModel } from "./post.model"
+
 export class UserModel {
     name: string
     email?: string
@@ -9,5 +11,6 @@ export class UserModel {
     idRole?: number
     gender?: string
     interests?: number[]
-    posts?: number[]
+    posts?: PostModel[]
+    idUser: number
 }

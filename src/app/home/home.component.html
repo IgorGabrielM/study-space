@@ -13,12 +13,10 @@
     </div>
 
     <div class="w-full flex gap-5 mt-5">
-        <div class="w-3/5 mb-2">
+        <div class="w-11/12 mx-auto mb-2">
             <div class="w-11/12 h-fit mx-auto">
                 <div class="w-full h-fit p-5 rounded-lg shadow-md bg-white" (click)="openPostDialog()">
                     <div class="w-full h-full flex justify-around items-center mt-1 mb-3">
-                        <img src="https://www.otempo.com.br/image/contentid/policy:1.3307636:1704726500/Davi-Brito-do-Puxadinho-do-BBB-24-png.png"
-                            alt="Imagem do usuário" class="rounded-full w-14 h-14 object-cover">
                         <div class="w-11/12 h-12 border-2 border-gray-500 rounded-full flex items-center pl-4">
                             <span class="text-gray-500 text-lg">Compartlhe seus conhecimentos!</span>
                         </div>
@@ -46,13 +44,6 @@
                             <app-post *ngFor="let post of interestSelected.posts" [post]="post"></app-post>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="w-2/5">
-            <div class="w-11/12 h-fit mx-auto mt-5 bg-white p-5 rounded-lg shadow-md">
-                <div class="mb-5">
-                    <span class="text-slate-600 text-xl">Últimas atividades</span>
                 </div>
             </div>
         </div>
