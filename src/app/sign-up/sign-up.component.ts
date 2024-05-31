@@ -69,7 +69,6 @@ export class SignUpComponent implements OnInit {
       ...this.user,
       idRole: 0,
       createdAt: new Date(),
-      imageUrl: '',
       interests: [
         0
       ],

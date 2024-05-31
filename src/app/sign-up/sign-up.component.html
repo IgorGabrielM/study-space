@@ -1,8 +1,13 @@
-<div class="w-screen h-screen bg-cover bg-center" style="background-image: url('../../assets/bg-auth.png')">
-  <div class="w-full h-full flex justify-center items-center">
+<div class="w-screen h-fit bg-cover bg-center" style="background-image: url('../../assets/bg-auth.png')">
+  <div class="w-full h-fit overflow-y-auto flex justify-center items-center">
+    <div
+      class="w-11/12 mt-5 mb-5   mx-auto lg:w-1/4 h-fit flex flex-col gap-2 bg-white px-5 py-4 lg:py-10 rounded-md shadow-lg">
+      <h2 class="text-4xl text-center mb-4">Criar conta</h2>
 
-    <div class="w-1/4 h-fit flex flex-col gap-2 bg-white px-5 py-10 rounded-md shadow-lg">
-      <h2 class="text-4xl text-center mb-6">Criar conta</h2>
+      <input type="text" name="email" placeholder="Preencha com a URL da imagem" [(ngModel)]="user.imageUrl"
+        class="w-full border-2 border-gray-300 rounded-full px-4 py-2">
+
+      <img *ngIf="user.imageUrl" [src]="user.imageUrl" alt="Imagem selecionado para o post">
 
       <input type="text" name="email" placeholder="Email" [(ngModel)]="user.email"
         class="w-full border-2 border-gray-300 rounded-full px-4 py-2">
@@ -58,9 +63,6 @@
           </li>
         </ul>
       </div>
-
-      <!--select de interests-->
-      <!--Imagem do usuário-->
 
       <button
         [disabled]="user.gender === '1' || (user.email.length < 0 || user.name.length < 0 || user.password.length < 6 || user.bio.length < 0 || !user.birthdate)"

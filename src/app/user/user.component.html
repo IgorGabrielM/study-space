@@ -17,21 +17,22 @@
 </div>
 
 <div (click)="signOut()"
-    class="absolute top-5 right-5 bg-red-600 rounded-full w-12 h-12 flex justify-center items-center shadow-lg hover:shadow-gray-600 hover:duration-300">
+    class="fixed bottom-3 right-3 lg:top-5 lg:right-5 bg-red-600 rounded-full w-12 h-12 flex justify-center items-center shadow-lg hover:shadow-gray-600 hover:duration-300">
     <i class="ph ph-bold ph-sign-out text-white text-lg"></i>
 </div>
 
 <div class="w-full h-screen flex bg-slate-100">
     <div class="w-11/12 flex gap-4 mx-auto">
-        <div class="w-3/5 mx-auto flex">
+        <div class="w-full lg:w-3/5 mx-auto flex">
             <div class="w-full">
-                <div class="w-full h-fit flex flex-col p-5 gap-5 mt-5 border shadow-xl rounded-xl bg-gray-200">
+                <div
+                    class="w-full h-fit flex flex-col p-5 gap-5 mt-5 border border-gray-300 shadow-xl rounded-xl bg-gray-200">
                     <span class="text-slate-600 text-xl font-bold">Biografia</span>
                     <p>{{ user?.bio }}</p>
                 </div>
 
                 <div *ngIf="user?.posts"
-                    class="w-full h-fit flex flex-col p-5 gap-5 mt-5 border shadow-xl rounded-xl bg-gray-200">
+                    class="w-full h-fit flex flex-col p-5 gap-5 mt-5 border border-gray-300 shadow-xl rounded-xl bg-gray-200">
                     <span class="text-slate-600 text-xl font-bold">Últimos posts</span>
                     <app-post *ngFor="let post of user.posts" [post]="post"></app-post>
                 </div>
