@@ -23,10 +23,12 @@ export class DialogCommentComponent implements OnInit {
   }
 
   comment() {
+    const userId = localStorage.getItem('userId');
+
     this.commentsService.create({
       postId: this.data.postId,
       text: this.commentText,
-      userId: 1
+      userId: Number(userId)
     }).then(() => {
       //toast de sucesso
       this.dialogRef.close();

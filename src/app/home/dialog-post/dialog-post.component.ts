@@ -72,22 +72,6 @@ export class DialogPostComponent implements OnInit {
     reader.onerror = (error) => { };
   }
 
-  onSubmit() {
-    const userId = Number(localStorage.getItem('userId'));
-
-    const payload = {
-      ...this.post,
-      imageUrl: this.imageUrl.toString(),
-      idUser: userId,
-      likesCount: 0,
-      commentsCount: 0
-    }
-
-    this.postService.createPost(payload).then(() => {
-      this.closeDialog();
-    })
-  }
-
   setInterest(event: any) {
     const interestId = parseInt(event.target.value, 10);
     if (event.target.checked) {
@@ -104,4 +88,18 @@ export class DialogPostComponent implements OnInit {
     return this.post.insterestsId.find((interest) => interest === id) ? true : false;
   }
 
+  onSubmit() {
+    const userId = Number(localStorage.getItem('userId'));
+    const payload = {
+      ...this.post,
+      imageUrl: this.imageUrl.toString(),
+      idUser: userId,
+      likesCount: 0,
+      commentsCount: 0
+    }
+
+    this.postService.createPost(payload).then(() => {
+      this.closeDialog();
+    })
+  }
 }

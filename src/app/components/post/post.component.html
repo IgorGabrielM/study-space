@@ -32,10 +32,9 @@
             <i *ngIf="isLiked()" class="ph ph-fill ph-heart text-xl"></i>
             <span>Curtir</span>
         </div>
-
         <div class="flex gap-2 items-center relative" (click)="openComment(post.idPost)">
             <i class="ph ph-chat-circle-dots text-xl"></i>
-            <span>Comentarios</span>
+            <span>Comentários</span>
             <div
                 class="w-5 h-5 flex justify-center items-center text-sm rounded-full bg-blue-500 absolute top-0 -right-6">
                 <span class="text-white">
@@ -47,11 +46,18 @@
 
     <div *ngIf="commentIsOpen">
         <div class="bg-blue-500 px-2 py-1 text-white font-bold w-fit rounded-md mb-2" (click)="openCommentDialog()">
-            Comentar
+            <span>Comentar</span>
         </div>
-
         <div *ngFor="let comment of post.comments" class="w-full my-1 py-1 border-t border-gray-500">
-            <span class="text-gray-500">{{ comment.text }}</span>
+            <div class="flex items-center gap-2">
+                <img *ngIf="comment?.user?.imageUrl.length > 0" [src]="comment?.user?.imageUrl" alt="Imagem do usuário"
+                    class="rounded-full border border-gray-300 w-10 h-10 object-cover">
+                <img *ngIf="comment?.user?.imageUrl.length == 0 || !comment.user"
+                    src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
+                    alt="Imagem do usuário" class="rounded-full border border-gray-300 w-10 h-10 object-cover">
+                <span class="truncate w-40 text-gray-500">{{ comment?.user?.name }}</span>
+            </div>
+            <span class="text-gray-700 mt-2">{{ comment.text }}</span>
         </div>
     </div>
 </div>

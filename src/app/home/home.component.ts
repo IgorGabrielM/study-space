@@ -31,7 +31,9 @@ export class HomeComponent implements OnInit {
   }
 
   loadPosts() {
-    this.postService.list().then((posts) => this.posts = posts.reverse())
+    this.postService.list().then((posts) => {
+      this.posts = posts.reverse()
+    })
   }
 
   loadInterests() {
