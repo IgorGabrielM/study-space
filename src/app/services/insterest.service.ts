@@ -11,16 +11,16 @@ export class InterestService {
     private http: HttpClient
   ) { }
 
-  async createPost(payload: InterestModel): Promise<void> {
+  async createInterests(payload: InterestModel): Promise<void> {
     try {
-      const response = await this.http.post<InterestModel>('http://localhost:3000/interests', payload).toPromise();
+      const response = await this.http.post<InterestModel>('https://study-space-1beb84dc5047.herokuapp.com/interests', payload).toPromise();
     } catch (error) {
     }
   }
 
   async list(): Promise<InterestModel[]> {
     try {
-      return await this.http.get<InterestModel[]>('http://localhost:3000/interests').toPromise();
+      return await this.http.get<InterestModel[]>('https://study-space-1beb84dc5047.herokuapp.com/interests').toPromise();
     } catch (error) {
       return Promise.reject(error);
     }
@@ -28,7 +28,7 @@ export class InterestService {
 
   async find(id: number): Promise<InterestModel> {
     try {
-      return await this.http.get<InterestModel>(`http://localhost:3000/interests/${id}`).toPromise();
+      return await this.http.get<InterestModel>(`https://study-space-1beb84dc5047.herokuapp.com/interests/${id}`).toPromise();
     } catch (error) {
       return Promise.reject(error);
     }

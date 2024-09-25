@@ -5,6 +5,7 @@ import { DialogPostComponent } from './dialog-post/dialog-post.component';
 import { PostService } from '../services/post.service';
 import { InterestService } from '../services/insterest.service';
 import { InterestModel } from '../models/interest.model';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +21,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private postService: PostService,
     private interestService: InterestService,
+    private authService: AuthService,
 
     public dialog: MatDialog,
   ) { }
