@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { UserModel } from '../models/user.model';
 import { InterestService } from '../services/insterest.service';
@@ -18,6 +18,9 @@ export class SignUpComponent implements OnInit {
 
   searchText: string = '';
 
+  particles: any[] = [];
+  particleCount = 100;
+
   constructor(
     private authService: AuthService,
     private interestService: InterestService,
@@ -29,12 +32,47 @@ export class SignUpComponent implements OnInit {
     this.user.gender = '1'
     this.user.interests = []
     this.loadInterests();
+
+    for (let i = 0; i < this.particleCount; i++) {
+      this.particles.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        dx: (Math.random() - 0.5) * 2,
+        dy: (Math.random() - 0.5) * 2
+      });
+    }
+    this.animateParticles();
   }
 
   loadInterests() {
     this.interestService.list().then((res) => {
       this.interests = res
+      console.log(this.interests)
       this.filteredInterests = res
+    });
+  }
+
+  animateParticles() {
+    this.particles.forEach(p => {
+      p.x += p.dx;
+      p.y += p.dy;
+
+      if (p.x < 0 || p.x > window.innerWidth) p.dx *= -1;
+      if (p.y < 0 || p.y > window.innerHeight) p.dy *= -1;
+    });
+    requestAnimationFrame(() => this.animateParticles());
+  }
+
+  @HostListener('mousemove', ['$event'])
+  onMouseMove(event: MouseEvent) {
+    this.particles.forEach(p => {
+      const dx = p.x - event.clientX;
+      const dy = p.y - event.clientY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance < 100) {
+        p.dx += dx * 0.01;
+        p.dy += dy * 0.01;
+      }
     });
   }
 

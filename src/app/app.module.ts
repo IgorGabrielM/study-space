@@ -16,6 +16,8 @@ import { ButtonModule } from 'primeng/button';
 
 import { InputTextModule } from 'primeng/inputtext';
 import { FloatLabelModule } from 'primeng/floatlabel';
+import { DropdownModule } from 'primeng/dropdown';
+import { ListboxModule } from 'primeng/listbox';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { FloatLabelModule } from 'primeng/floatlabel';
     FormsModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
+    DropdownModule,
+    ListboxModule
   ],
   providers: [],
   bootstrap: [AppComponent],

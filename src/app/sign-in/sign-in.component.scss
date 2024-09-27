@@ -1,5 +1,18 @@
-.error-snackbar {
-    background-color: #f44336;
-    color: #fff;
+:host {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #171717;
+  position: relative;
 }
 
+.particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: #ed145b;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
