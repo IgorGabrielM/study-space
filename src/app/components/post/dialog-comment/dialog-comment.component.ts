@@ -28,7 +28,7 @@ export class DialogCommentComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  comment() {
+  sendComment() {
     const userId = localStorage.getItem('userId');
 
     this.commentsService.create({
