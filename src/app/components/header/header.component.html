@@ -1,6 +1,6 @@
 <div *ngIf="verifyNotShow()"
-    class="hidden lg:flex w-full h-20 justify-between px-32 items-center bg-[color:#0089D6] text-white">
-    <span routerLink="../home" class="text-3xl font-extrabold">StudySpace</span>
+    class="hidden lg:flex w-full h-20 justify-between px-32 items-center bg-secondary text-white">
+    <span routerLink="../home" class="text-3xl font-bold">StudySpace</span>
 
     <div class="flex gap-2" routerLink="../user">
         <img *ngIf="user?.imageUrl.length > 0" [src]="user?.imageUrl" alt="Imagem do usuário"
@@ -13,7 +13,7 @@
 </div>
 
 <div *ngIf="verifyNotShow()"
-    class="w-full h-20 flex lg:hidden justify-between px-4 items-center bg-[color:#0089D6] text-white">
+    class="w-full h-20 flex lg:hidden justify-between px-4 items-center bg-secondary border-b-2 border-primary text-primary">
     <span routerLink="../home" class="text-3xl font-extrabold">StudySpace</span>
 
     <div class="flex gap-2" routerLink="../user">

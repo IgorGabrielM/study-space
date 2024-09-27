@@ -9,7 +9,7 @@
       <input-file-component [directory]="'users'" (imageUrlEvent)="handleImageUrl($event)"></input-file-component>
       <input class="w-full bg-dark px-2 py-1 text-white" pInputText id="email" placeholder="Email" [(ngModel)]="user.email" />
       <input class="w-full bg-dark px-2 py-1 text-white" pInputText id="name" placeholder="Nome" [(ngModel)]="user.name" />
-      <input class="w-full bg-dark px-2 py-1 text-white" pInputText id="password" placeholder="Senha" [(ngModel)]="user.password" />
+      <input class="w-full bg-dark px-2 py-1 text-white" pInputText id="password" type="password" placeholder="Senha" [(ngModel)]="user.password" />
       <textarea
         class="w-full bg-dark px-2 py-1 text-white rounded-md"
         rows="5"
