@@ -1,6 +1,6 @@
-<div class="p-3">
-    <span class="text-gray-800 font-bold text-md">Comentário</span>
-    <textarea class="w-full p-2 border border-gray-400 shadow-md rounded-md" type="text" [(ngModel)]="commentText"
+<div class="pt-3 w-full h-full bg-secondary">
+    <span class="text-secondary font-bold text-md">Comentário</span>
+    <textarea class="w-full p-2 border border-gray-400 shadow-md rounded-t-lg" type="text" [(ngModel)]="commentText"
         rows="5"></textarea>
     <div class="w-full flex gap-2 justify-end">
         <button class="flex gap-2 bg-red-500 text-white justify-center items-center px-2 py-1 rounded-md shadow-lg mt-2"
@@ -15,4 +15,5 @@
             <span class="font-bold">Enviar</span>
         </button>
     </div>
+  <input class="w-full bg-dark p-2 text-white fixed bottom-0" pInputText id="comment" placeholder="Adicione um comentário..." [(ngModel)]="commentText" />
 </div>

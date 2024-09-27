@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import {Component, HostListener, Inject, Input, OnInit} from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CommentsService } from 'src/app/services/comments.service';
 
@@ -33,5 +33,15 @@ export class DialogCommentComponent implements OnInit {
       //toast de sucesso
       this.dialogRef.close();
     })
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    const commentInput = document.getElementById('comment');
+    if (window.innerHeight < 500) { // Ajuste o valor conforme necessário
+      commentInput!.style.bottom = '50px'; // Ajuste a posição conforme necessário
+    } else {
+      commentInput!.style.bottom = '0';
+    }
   }
 }

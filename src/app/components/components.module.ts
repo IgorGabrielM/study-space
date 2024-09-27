@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { InputFileComponent } from './input-file/input-file.component';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ToastModule } from 'primeng/toast';
+import {InputTextModule} from "primeng/inputtext";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ToastModule } from 'primeng/toast';
     MatDialogModule,
     FormsModule,
     ProgressBarModule,
-    ToastModule
+    ToastModule,
+    InputTextModule
   ]
 })
 export class ComponentsModule { }

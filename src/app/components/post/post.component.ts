@@ -23,7 +23,10 @@ export class PostComponent implements OnInit {
 
   openCommentDialog(): void {
     const dialogRef = this.dialog.open(DialogCommentComponent, {
-      width: '400px',
+      height: '95vh',
+      width: '100vw',
+      maxWidth: '100vw',
+      position: {bottom: '0'},
       data: { postId: this.post.idPost },
     });
 

@@ -11,7 +11,7 @@
       <div class="flex flex-col gap-2">
           <input class="w-full bg-dark px-2 py-1 text-white" pInputText id="email" placeholder="Email" [(ngModel)]="user.email" />
 
-          <input class="w-full bg-dark px-2 py-1 text-white" pInputText id="password" placeholder="Senha" [(ngModel)]="user.password" />
+          <input class="w-full bg-dark px-2 py-1 text-white" pInputText id="password" placeholder="Senha" type="password" [(ngModel)]="user.password" />
 
         <p-button class="font-bold text-white mt-2" label="Entrar"
                   [style]="{ width: '100%', padding: '0.25rem', 'background-color': '#ed145b' }"
