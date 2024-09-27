@@ -6,12 +6,7 @@
       class="w-full m-6 lg:w-1/4 lg:mx-auto h-fit px-5 py-10 flex flex-col gap-2 rounded-md shadow-lg z-10
       border border-primary bg-secondary">
       <h2 class="text-4xl text-center font-bold text-white mb-6 font-sans">Criar conta</h2>
-
-      <input type="text" name="email" placeholder="Preencha com a URL da imagem" [(ngModel)]="user.imageUrl"
-        class="w-full border-2 border-gray-300 rounded-full px-4 py-2">
-
-      <img *ngIf="user.imageUrl" [src]="user.imageUrl" alt="Imagem selecionado para o post">
-
+      <input-file-component [directory]="'users'" (imageUrlEvent)="handleImageUrl($event)"></input-file-component>
       <input class="w-full bg-dark px-2 py-1 text-white" pInputText id="email" placeholder="Email" [(ngModel)]="user.email" />
       <input class="w-full bg-dark px-2 py-1 text-white" pInputText id="name" placeholder="Nome" [(ngModel)]="user.name" />
       <input class="w-full bg-dark px-2 py-1 text-white" pInputText id="password" placeholder="Senha" [(ngModel)]="user.password" />

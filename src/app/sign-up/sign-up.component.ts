@@ -47,7 +47,6 @@ export class SignUpComponent implements OnInit {
   loadInterests() {
     this.interestService.list().then((res) => {
       this.interests = res
-      console.log(this.interests)
       this.filteredInterests = res
     });
   }
@@ -96,6 +95,10 @@ export class SignUpComponent implements OnInit {
         this.user.interests.splice(index, 1);
       }
     }
+  }
+
+  handleImageUrl(url: string) {
+    this.user.imageUrl = url;
   }
 
   verifyCheck(id: number): boolean {

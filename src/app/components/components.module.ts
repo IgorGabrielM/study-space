@@ -6,23 +6,29 @@ import { HeaderComponent } from './header/header.component';
 import { DialogCommentComponent } from './post/dialog-comment/dialog-comment.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
-
+import { InputFileComponent } from './input-file/input-file.component';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
     PostComponent,
     HeaderComponent,
     DialogCommentComponent,
+    InputFileComponent,
   ],
   exports: [
     PostComponent,
-    HeaderComponent
+    HeaderComponent,
+    InputFileComponent
   ],
   imports: [
     RouterModule,
     CommonModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    ProgressBarModule,
+    ToastModule
   ]
 })
 export class ComponentsModule { }

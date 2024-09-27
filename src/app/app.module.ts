@@ -18,6 +18,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { DropdownModule } from 'primeng/dropdown';
 import { ListboxModule } from 'primeng/listbox';
+import { environment } from '../environments/environment';
+import {AngularFireModule} from "@angular/fire/compat";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 
 @NgModule({
   declarations: [
@@ -41,7 +44,9 @@ import { ListboxModule } from 'primeng/listbox';
     BrowserAnimationsModule,
     MatSnackBarModule,
     DropdownModule,
-    ListboxModule
+    ListboxModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent],
