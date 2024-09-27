@@ -12,7 +12,6 @@ import { UserModel } from 'src/app/models/user.model';
 })
 export class PostComponent implements OnInit {
   @Input() post: PostModel
-  commentIsOpen: boolean = false;
 
   constructor(
     private postService: PostService,
@@ -27,7 +26,7 @@ export class PostComponent implements OnInit {
       width: '100vw',
       maxWidth: '100vw',
       position: {bottom: '0'},
-      data: { postId: this.post.idPost },
+      data: { post: this.post },
     });
 
     dialogRef.afterClosed().subscribe(() => {
@@ -36,7 +35,6 @@ export class PostComponent implements OnInit {
   }
 
   openComment(idPost: number) {
-    this.commentIsOpen = !this.commentIsOpen
     this.postService.find(idPost).then((res) => {
       this.post = res
     })
@@ -65,8 +63,7 @@ export class PostComponent implements OnInit {
 
   isLiked(): boolean {
     const userId = Number(localStorage.getItem('userId'));
-    const userLiked = this.post.likes.find((like) => like.idUser === userId)
-    return userLiked ? true : false
+    return !!(this.post.likes.find((like) => like.idUser === userId))
   }
 
 }

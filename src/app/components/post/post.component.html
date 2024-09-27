@@ -38,21 +38,4 @@
             </div>
         </div>
     </div>
-
-    <div *ngIf="commentIsOpen">
-        <div class="bg-primary px-2 py-1 text-white font-bold w-fit rounded-md mb-2 cursor-pointer" (click)="openCommentDialog()">
-            <span>Comentar</span>
-        </div>
-        <div *ngFor="let comment of post.comments" class="w-full my-1 py-1 border-t border-gray-500">
-            <div class="flex items-center gap-2">
-                <img *ngIf="comment?.user?.imageUrl.length > 0" [src]="comment?.user?.imageUrl" alt="Imagem do usuário"
-                    class="rounded-full border border-gray-300 w-10 h-10 object-cover">
-                <img *ngIf="comment?.user?.imageUrl.length == 0 || !comment.user"
-                    src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
-                    alt="Imagem do usuário" class="rounded-full border border-gray-300 w-10 h-10 object-cover">
-                <span class="truncate w-40 text-gray-500">{{ comment?.user?.name }}</span>
-            </div>
-            <span class="text-gray-700 mt-2">{{ comment.text }}</span>
-        </div>
-    </div>
 </div>
