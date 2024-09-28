@@ -19,21 +19,21 @@ export class AuthService {
 
   async createUser(payload: UserModel): Promise<void> {
     try {
-      const response = await this.http.post<UserModel>('https://study-space-1beb84dc5047.herokuapp.com/users', payload).toPromise();
+      const response = await this.http.post<UserModel>('http://localhost:3000/users', payload).toPromise();
     } catch (error) {
     }
   }
 
   async auth(payload: AuthModel): Promise<any> {
     try {
-      return await this.http.post<UserModel>('https://study-space-1beb84dc5047.herokuapp.com/auth', payload).toPromise();
+      return await this.http.post<UserModel>('http://localhost:3000/auth', payload).toPromise();
     } catch (error) {
     }
   }
 
   async find(id): Promise<UserModel> {
     try {
-      return await this.http.get<UserModel>(`https://study-space-1beb84dc5047.herokuapp.com/users/${id}`).toPromise();
+      return await this.http.get<UserModel>(`http://localhost:3000/users/${id}`).toPromise();
     } catch (error) {
       return Promise.reject(error);
     }
