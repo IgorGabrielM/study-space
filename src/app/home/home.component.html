@@ -1,12 +1,12 @@
 <div class="w-full h-fit flex bg-dark">
     <div class="w-2/6 h-screen ml-6 hidden md:block">
-        <div class="w-full h-fit bg-white mt-5 p-5 rounded-lg shadow-md">
-            <span class="text-slate-600 text-xl">Interesses</span>
-            <div class="flex flex-wrap gap-1">
-                <div class="w-fit py-1 text-white bg-blue-600 px-1 rounded-md" *ngFor="let int of interests"
-                    (click)="filterPostsByInterests(int.idInterest)">
-                    <span class="mr-2">{{ int.text }}</span>
-                    <span class="px-1  bg-white rounded-md text-blue-800 font-bold">{{ int?.posts?.length }}</span>
+        <div class="w-full h-fit bg-secondary border-2 border-gray-400 mt-5 p-5 rounded-lg shadow-md">
+            <span class="text-white font-bold text-xl">Interesses</span>
+            <div class="flex flex-wrap gap-2 mt-4">
+                <div *ngFor="let interest of interests" [class]="'w-fit p-1 text-white border-2 border-primary px-1 rounded-md ' + (interest === interestSelected ? 'bg-primary' : 'bg-secondary') "
+                    (click)="filterPostsByInterests(interest.idInterest)">
+                    <span class="mr-2">{{ interest.text }}</span>
+                    <span class="px-2 bg-primary rounded-md text-white font-bold">{{ interest?.posts?.length }}</span>
                 </div>
             </div>
         </div>
@@ -15,7 +15,7 @@
     <div class="w-full flex gap-5 mt-5">
         <div class="w-11/12 mx-auto mb-2">
             <div class="w-full h-fit mx-auto">
-                <div class="w-full h-fit px-5 py-2 bg-secondary rounded-lg shadow-md flex justify-around items-center" (click)="openPostDialog()">
+                <div class="w-full h-fit px-5 py-2 bg-secondary rounded-lg shadow-md flex justify-between items-center" (click)="openPostDialog()">
                   <p class="text-gray-400 whitespace-nowrap">Compartlhe seus conhecimentos!</p>
                   <i class="ph ph-image text-2xl ml-2 text-gray-400"></i>
                 </div>
@@ -29,8 +29,8 @@
                     </div>
                     <div *ngIf="interestSelected">
                         <span (click)="interestSelected = null"
-                            class="w-fit h-fit px-2 py-1 border border-red-500 text-red-500 flex justify-center items-center gap-2 bg-white rounded-full mb-2">
-                            <i class="ph ph-bold ph-x-circle"></i> Remover filtro
+                            class="w-fit h-fit px-2 py-1 border-2 border-primary bg-secondary text-white flex justify-center items-center gap-2 rounded-full mb-2">
+                            <i class="ph ph-bold ph-x-circle text-primary"></i> Remover filtro
                         </span>
                         <div *ngIf="interestSelected.posts && interestSelected.posts.length"
                             class="w-full flex flex-col gap-5">

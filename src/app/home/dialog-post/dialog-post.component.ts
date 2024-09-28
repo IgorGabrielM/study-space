@@ -56,11 +56,8 @@ export class DialogPostComponent implements OnInit {
     }
   }
 
-  onFileSelected(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files[0]) {
-      this.previewImage(input.files[0]);
-    }
+  handleImageUrl(url: string) {
+    this.post.imageUrl = url;
   }
 
   previewImage(file: File): void {
@@ -92,10 +89,9 @@ export class DialogPostComponent implements OnInit {
     const userId = Number(localStorage.getItem('userId'));
     const payload = {
       ...this.post,
-      imageUrl: this.imageUrl.toString(),
       idUser: userId,
       likesCount: 0,
-      commentsCount: 0
+      commentsCount: 0,
     }
 
     this.postService.createPost(payload).then(() => {
