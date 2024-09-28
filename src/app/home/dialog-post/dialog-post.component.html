@@ -1,60 +1,59 @@
-<div class="p-3">
-    <span class="text-gray-800 font-bold text-lg ">Postagem</span>
+<div class="w-full h-screen overscroll-y-auto bg-secondary">
+  <div class="w-full h-fit p-4 bg-secondary">
+    <span class="text-white font-bold text-lg">Postagem</span>
 
     <div class="flex flex-col gap-2 mt-2">
-        <input class="w-full p-2 border border-gray-400 shadow-sm rounded-md" name="title" placeholder="Titulo"
-            type="text" [(ngModel)]="post.title">
+      <input class="w-full bg-dark px-2 py-1 text-white" pInputText id="title" placeholder="Título" [(ngModel)]="post.title" />
+      <textarea class="w-full bg-dark px-2 py-1 text-white rounded-md" type="text" rows="5"
+          placeholder="Compartilhe seus conhecimentos" [(ngModel)]="post.text" [maxlength]="280"></textarea>
 
-        <textarea class="w-full p-2 border border-gray-400 shadow-sm rounded-md" type="text" rows="5"
-            placeholder="Compartilhe seus conhecimentos" [(ngModel)]="post.text" [maxlength]="280"></textarea>
-
-        <div>
-            <div class="p-3">
-                <label for="input-group-search" class="sr-only">Buscar</label>
-                <div class="relative">
-                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
-                    </div>
-                    <input type="text" id="input-group-search" [(ngModel)]="searchText" (input)="search()"
-                        class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
-                        placeholder="Procurar interesses">
+      <div>
+        <div class="p-3">
+            <label for="input-group-search" class="sr-only">Buscar</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                    </svg>
                 </div>
+                <input type="text" id="input-group-search" [(ngModel)]="searchText" (input)="search()"
+                    class="bg-secondary text-white border border-gray-600 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full ps-10 p-2.5"
+                    placeholder="Procurar interesses">
             </div>
-            <ul class="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 border border-gray-400 rounded-md"
-                aria-labelledby="dropdownSearchButton" (change)="setInterest($event)">
-                <li *ngFor="let interest of filteredInterests">
-                    <div class="flex items-center p-2 rounded hover:bg-gray-100">
-                        <input id="checkbox-item-11" type="checkbox" [value]="interest.idInterest"
-                            [checked]="verifyCheck(interest.idInterest)"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                        <label for="checkbox-item-11" class="w-full ms-2 text-sm font-medium text-gray-900 rounded">
-                            {{ interest.text }}
-                        </label>
-                    </div>
-                </li>
-            </ul>
         </div>
+        <ul class="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 border border-gray-600 rounded-md"
+            aria-labelledby="dropdownSearchButton" (change)="setInterest($event)">
+          <li *ngFor="let interest of filteredInterests">
+            <div class="flex items-center p-2 rounded hover:bg-dark hover:text-primary text-white">
+              <input id="checkbox-item-11" type="checkbox" [value]="interest.idInterest"
+                     [checked]="verifyCheck(interest.idInterest)"
+                     class="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded appearance-none checked:bg-primary forced">
+              <label for="checkbox-item-11" class="w-full ms-2 text-sm font-medium rounded">
+                {{ interest.text }}
+              </label>
+            </div>
+          </li>
+        </ul>
+      </div>
 
-        <input type="text" placeholder="Preencha com a URL da imagem" [(ngModel)]="imageUrl"
-            class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
-        <img *ngIf="imageUrl" [src]="imageUrl" alt="Imagem selecionado para o post">
+      <input-file-component [directory]="'posts'" (imageUrlEvent)="handleImageUrl($event)"></input-file-component>
 
-        <div class="w-full flex gap-2 justify-end">
-            <button
-                class="flex gap-2 bg-red-500 text-white justify-center items-center px-2 py-1 rounded-md shadow-lg mt-2"
-                (click)="closeDialog()">
-                <i class="ph ph-bold ph-trash"></i>
-                <span class="font-bold">Cancelar</span>
-            </button>
-            <button
-                class="flex gap-2 bg-blue-500 text-white justify-center items-center px-2 py-1 rounded-md shadow-lg mt-2 disabled:bg-blue-300"
-                (click)="onSubmit()">
-                <i class="ph ph-bold ph-paper-plane-tilt"></i>
-                <span class="font-bold">Enviar</span>
-            </button>
-        </div>
+      <div class="w-full flex gap-2 justify-end">
+          <button
+              class="flex gap-2 bg-secondary border-2 border-primary text-primary justify-center items-center px-2 py-1 rounded-md shadow-lg mt-2"
+              (click)="closeDialog()">
+              <i class="ph ph-bold ph-trash"></i>
+              <span class="font-bold">Cancelar</span>
+          </button>
+          <button
+              class="flex gap-2 bg-primary text-white justify-center items-center px-2 py-1 rounded-md shadow-lg mt-2 disabled:opacity-50"
+              (click)="onSubmit()" [disabled]="!(post.title && post.text && post?.insterestsId?.length > 0)">
+              <i class="ph ph-bold ph-paper-plane-tilt"></i>
+              <span class="font-bold">Enviar</span>
+          </button>
+      </div>
     </div>
+  </div>
+</div>

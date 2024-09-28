@@ -6,6 +6,7 @@ import { PostService } from '../services/post.service';
 import { InterestService } from '../services/insterest.service';
 import { InterestModel } from '../models/interest.model';
 import { AuthService } from '../services/auth.service';
+import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 
 @Component({
   selector: 'app-home',
@@ -22,6 +23,7 @@ export class HomeComponent implements OnInit {
     private postService: PostService,
     private interestService: InterestService,
     private authService: AuthService,
+    private breakpointObserver: BreakpointObserver,
 
     public dialog: MatDialog,
   ) { }
@@ -43,8 +45,17 @@ export class HomeComponent implements OnInit {
   }
 
   openPostDialog(): void {
-    const dialogRef = this.dialog.open(DialogPostComponent, {
-      width: '600px',
+    let dialogWidth = '90vw';
+
+    this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.Tablet]).subscribe(result => {
+      if (!result.matches) {
+        dialogWidth = '50vw';
+      }
+    })
+
+      const dialogRef = this.dialog.open(DialogPostComponent, {
+      width: dialogWidth,
+      maxWidth: '100vw',
     });
 
     dialogRef.afterClosed().subscribe(() => {

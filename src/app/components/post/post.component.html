@@ -16,7 +16,7 @@
     </div>
     <h4 class="text-lg font-bold text-white">{{ post.title }}</h4>
     <p class="text-gray-400 mt-2">{{ post.text }}</p>
-    <img *ngIf="post.imageUrl" [src]="post.imageUrl" class="rounded-md" alt="Imagme do post">
+    <img *ngIf="post.imageUrl" [src]="post.imageUrl" class="rounded-md mt-2" alt="Imagme do post">
 
     <div class="flex gap-2 overflow-x-auto mt-2" *ngIf="post.interests && post.interests.length">
         <div *ngFor="let interest of post.interests" class="px-3 py-1 rounded-md text-white bg-blue-600">
