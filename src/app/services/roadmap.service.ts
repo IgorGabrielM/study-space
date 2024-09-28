@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class RoadmapService {
-  private apiUrl = 'http://localhost:3000/roadmaps'; // URL da sua API
+  private apiUrl = 'https://study-space-1beb84dc5047.herokuapp.com/roadmaps'; // URL da sua API
 
   constructor(private http: HttpClient) {}
 
