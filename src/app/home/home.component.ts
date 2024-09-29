@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
 
   loadPosts() {
     this.postService.list().then((posts) => {
-      this.posts = posts.reverse()
+      this.posts = posts
     })
   }
 
@@ -72,4 +72,9 @@ export class HomeComponent implements OnInit {
     this.router.navigate([`../${route}`]);
   }
 
+  signOut() {
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userToken');
+    this.router.navigate(['../sign-in'])
+  }
 }

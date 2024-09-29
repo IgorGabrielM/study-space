@@ -40,7 +40,7 @@ export class DialogMediaComponent implements OnInit {
 
   ngOnInit(): void {
     this.media = new MediaModel()
-    this.media.insterestsId = []
+    this.media.interestIds = []
     this.loadInterests();
   }
 
@@ -68,17 +68,17 @@ export class DialogMediaComponent implements OnInit {
   setInterest(event: any) {
     const interestId = parseInt(event.target.value, 10);
     if (event.target.checked) {
-      this.media.insterestsId.push(interestId);
+      this.media.interestIds.push(interestId);
     } else {
-      const index = this.media.insterestsId.indexOf(interestId);
+      const index = this.media.interestIds.indexOf(interestId);
       if (index !== -1) {
-        this.media.insterestsId.splice(index, 1);
+        this.media.interestIds.splice(index, 1);
       }
     }
   }
 
   verifyCheck(id: number): boolean {
-    return this.media.insterestsId.find((interest) => interest === id) ? true : false;
+    return this.media.interestIds.find((interest) => interest === id) ? true : false;
   }
 
   onSubmit() {

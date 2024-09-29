@@ -50,7 +50,7 @@
         </button>
         <button
           class="flex gap-2 bg-primary text-white justify-center items-center px-2 py-1 rounded-md shadow-lg mt-2 disabled:opacity-50"
-          (click)="onSubmit()" [disabled]="!(media.title && media.institution && media.description && media?.insterestsId?.length > 0)">
+          (click)="onSubmit()" [disabled]="!(media.title && media.institution && media.description && media?.interestIds?.length > 0)">
           <i class="ph ph-bold ph-paper-plane-tilt"></i>
           <span class="font-bold">Enviar</span>
         </button>

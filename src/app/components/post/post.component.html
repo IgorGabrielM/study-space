@@ -1,13 +1,13 @@
 <div class="w-full h-fit p-5 rounded-lg shadow-md bg-secondary border-2 border-gray-400">
     <div class="w-full h-full flex justify-around mt-1 mb-3">
         <div class="w-full flex items-center gap-2">
-            <img *ngIf="post.user.imageUrl.length > 0" [src]="post.user.imageUrl" alt="Imagem do usuário"
+            <img *ngIf="post?.user?.imageUrl?.length > 0" [src]="post?.user?.imageUrl" alt="Imagem do usuário"
                 class="rounded-full w-14 h-14 object-cover">
-            <img *ngIf="post.user.imageUrl.length == 0"
+            <img *ngIf="post?.user?.imageUrl?.length == 0"
                 src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
                 alt="Imagem do usuário" class="rounded-full w-14 h-14 object-cover">
             <div>
-                <span class="text-primary font-bold" [routerLink]="['user']">{{ post.user.name }}</span>
+                <span class="text-primary font-bold" [routerLink]="['user']">{{ post?.user?.name }}</span>
             </div>
         </div>
         <div class="w-full h-12 lg:flex text-sm justify-end items-end text-end text-gray-600">

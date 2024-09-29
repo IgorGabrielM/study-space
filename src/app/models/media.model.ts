@@ -8,7 +8,7 @@ export class MediaModel {
     imageUrl?: string;
     institution?: string;
     type?: string;
-    user?: UserModel;
-    insterestsId?: number[];
+    users?: UserModel[];
+    interestIds?: number[];
     userId?: number;
 }

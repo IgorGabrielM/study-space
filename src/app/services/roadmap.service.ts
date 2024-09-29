@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {RoadmapModel} from "../models/roadmap.model";
 
 @Injectable({
   providedIn: 'root',
@@ -10,13 +11,11 @@ export class RoadmapService {
 
   constructor(private http: HttpClient) {}
 
-  // Método para buscar o roadmap pelo ID
-  listRoadmap(): Observable<any> {
+  listRoadmapOptions(): Observable<{ id: number, name: string, imageUrl: string }[]> {
     return this.http.get<any>(`${this.apiUrl}`);
   }
 
-  findRoadmap(id: string): Observable<any> {
+  findRoadmap(id: number): Observable<RoadmapModel> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
-
 }
