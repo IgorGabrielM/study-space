@@ -1,1 +1,30 @@
-<p>roadmap works!</p>
+<div class="w-full h-fit min-h-full flex bg-secondary">
+  <div class="w-full flex gap-5 mt-5 bg-secondary">
+    <div class="w-11/12 mx-auto mb-2">
+      <div class="w-full h-fit mx-auto">
+        <div class="flex justify-between px-3 my-4 border-2 border-gray-400 py-2 rounded-lg">
+          <button (click)="goTo('home')"
+                  class="flex gap-2 bg-secondary border-2 border-primary text-primary justify-center items-center px-2 rounded-md shadow-lg">
+            <span class="font-bold">Posts</span>
+          </button>
+          <button (click)="goTo('cursos')"
+                  class="flex gap-2 bg-secondary border-2 border-primary text-primary justify-center items-center px-2 rounded-md shadow-lg">
+            <span class="font-bold">Cursos</span>
+          </button>
+          <button (click)="goTo('roadmaps')"
+                  class="flex gap-2 bg-primary text-white justify-center items-center px-2 py-1 rounded-md shadow-lg">
+            <span class="font-bold">Roadmaps</span>
+          </button>
+        </div>
+
+        <div class="mt-5 mb-3">
+          <span class="text-white font-bold text-xl">Roadmaps</span>
+        </div>
+
+        <div class="w-full h-full">
+          <div #diagramDiv id="diagramDiv" style="width:100%; height:60vh;" class="bg-gray-700 border-2 border-gray-400 rounded-lg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

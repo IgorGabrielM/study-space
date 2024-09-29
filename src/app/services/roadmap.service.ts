@@ -11,7 +11,12 @@ export class RoadmapService {
   constructor(private http: HttpClient) {}
 
   // Método para buscar o roadmap pelo ID
-  buscarRoadmap(id: string): Observable<any> {
+  listRoadmap(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}`);
+  }
+
+  findRoadmap(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
+
 }

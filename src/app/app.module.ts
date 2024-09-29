@@ -21,6 +21,8 @@ import { ListboxModule } from 'primeng/listbox';
 import { environment } from '../environments/environment';
 import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {GojsAngularModule} from "gojs-angular";
+import {RoadmapComponent} from "./roadmap/roadmap.component";
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
     SignInComponent,
     SignUpComponent,
     SignUpComponent,
+    RoadmapComponent
   ],
   imports: [
     ButtonModule,
@@ -37,8 +40,8 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
     BrowserModule,
     AppRoutingModule,
     HomeModule,
-    UserModule,
     HttpClientModule,
+    UserModule,
     ComponentsModule,
     FormsModule,
     BrowserAnimationsModule,
@@ -46,7 +49,8 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
     DropdownModule,
     ListboxModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    GojsAngularModule
   ],
   providers: [],
   bootstrap: [AppComponent],

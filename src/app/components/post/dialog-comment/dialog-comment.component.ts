@@ -28,7 +28,6 @@ export class DialogCommentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.post)
   }
 
   ngAfterViewInit() {

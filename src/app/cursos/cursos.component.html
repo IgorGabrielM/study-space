@@ -1,0 +1,45 @@
+<div class="w-full h-fit min-h-full flex bg-secondary">
+  <div class="w-full flex gap-5 mt-5 bg-secondary">
+    <div class="w-11/12 mx-auto mb-2">
+      <div class="w-full h-fit mx-auto">
+        <div class="flex justify-between px-3 my-4 border-2 border-gray-400 py-2 rounded-lg">
+          <button (click)="goTo('home')"
+                  class="flex gap-2 bg-secondary border-2 border-primary text-primary justify-center items-center px-2 rounded-md shadow-lg">
+            <span class="font-bold">Posts</span>
+          </button>
+          <button (click)="goTo('cursos')"
+                  class="flex gap-2 bg-primary text-white justify-center items-center px-2 py-1 rounded-md shadow-lg">
+            <span class="font-bold">Cursos</span>
+          </button>
+          <button (click)="goTo('roadmaps')"
+                  class="flex gap-2 bg-secondary border-2 border-primary text-primary justify-center items-center px-2 rounded-md shadow-lg">
+            <span class="font-bold">Roadmaps</span>
+          </button>
+        </div>
+
+        <button
+          class="w-full flex gap-1 bg-primary text-white justify-center items-center mt-8 mb-4 px-2 py-2 rounded-md shadow-lg" (click)="openDialogMedia()">
+          <i class="ph ph-plus-circle text-xl"></i>
+          <span class="font-bold">Curso</span>
+        </button>
+
+        <div class="w-full h-fit flex flex-col gap-2">
+          <h3 class="text-xl text-white font-bold">Cursos realizados</h3>
+          <div class="w-full flex flex-col p-4 justify-content-center border-2 border-gray-400 rounded-md text-gray-400 mt-2 ">
+            <div class="flex flex-col gap-2">
+              <div *ngIf="cursos.length === 0" class="text-white font-bold">
+                <span>Nenhum curso...</span>
+              </div>
+              <div *ngFor="let curso of cursos" class="text-white">
+                <img *ngIf="curso.imageUrl" [src]="curso.imageUrl" class="rounded-md mt-2" alt="Imagme do curso">
+                <p class="text-lg font-bold">{{ curso.type }} - {{ curso.institution }}</p>
+                <p class="text-sm">{{ curso.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

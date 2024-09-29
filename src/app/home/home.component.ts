@@ -7,6 +7,7 @@ import { InterestService } from '../services/insterest.service';
 import { InterestModel } from '../models/interest.model';
 import { AuthService } from '../services/auth.service';
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -22,8 +23,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private postService: PostService,
     private interestService: InterestService,
-    private authService: AuthService,
     private breakpointObserver: BreakpointObserver,
+    private router: Router,
 
     public dialog: MatDialog,
   ) { }
@@ -65,6 +66,10 @@ export class HomeComponent implements OnInit {
 
   filterPostsByInterests(idInterest: number) {
     this.interestSelected = this.interests.find((interest) => interest.idInterest === idInterest)
+  }
+
+  goTo(route: string) {
+    this.router.navigate([`../${route}`]);
   }
 
 }

@@ -19,14 +19,12 @@ export class DialogPostComponent implements OnInit {
 
   interests: InterestModel[] = [];
   filteredInterests: InterestModel[] = [];
-
   searchText: string = '';
 
   constructor(
     public dialogRef: MatDialogRef<DialogCommentComponent>,
     private interestService: InterestService,
     private postService: PostService,
-    private http: HttpClient
   ) { }
 
   ngOnInit() {
@@ -58,15 +56,6 @@ export class DialogPostComponent implements OnInit {
 
   handleImageUrl(url: string) {
     this.post.imageUrl = url;
-  }
-
-  previewImage(file: File): void {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      this.imageUrl = reader.result;
-    };
-    reader.onerror = (error) => { };
   }
 
   setInterest(event: any) {

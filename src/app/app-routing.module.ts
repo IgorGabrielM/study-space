@@ -7,6 +7,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { AuthGuard } from 'src/guard/auth.guard';
 import { RoadmapComponent } from './roadmap/roadmap.component';
 import { RoadmapDetailComponent } from './roadmap/roadmap-detail.component';
+import {CursosComponent} from "./cursos/cursos.component";
 
 const routes: Routes = [
   {
@@ -31,8 +32,14 @@ const routes: Routes = [
     path: 'user',
     component: UserComponent,
   },
-  { path: 'roadmaps', component: RoadmapComponent }, // Página inicial do roadmap (lista de roadmaps)
-  { path: 'roadmaps/:id', component: RoadmapDetailComponent }, // Página de detalhe com ID dinâmico
+  {
+    path: 'roadmaps',
+    component: RoadmapComponent,
+  },
+  {
+    path: 'cursos',
+    component: CursosComponent,
+  }
 ];
 
 @NgModule({
