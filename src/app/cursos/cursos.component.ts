@@ -49,7 +49,7 @@ export class CursosComponent implements OnInit {
 
   loadMedia(){
     this.mediaService.list().then((res) => {
-      this.cursos = res;
+      this.cursos = res.reverse();
     })
   }
 

@@ -61,7 +61,7 @@ export class UserComponent implements OnInit{
     const userToken = localStorage.getItem('userId');
     this.mediaService.list().then((res) => {
       if(res?.length > 0){
-        this.cursos = res.filter((curso) => curso?.users[0]?.user?.idUser.toString() == userToken.toString());
+        this.cursos = res.filter((curso) => curso?.users[0]?.user?.idUser.toString() == userToken.toString()).reverse();
       }
     })
   }
