@@ -86,6 +86,7 @@ export class DialogMediaComponent implements OnInit {
     const payload = {
       ...this.media,
       idUser: userId,
+      type: 'Curso'
     }
 
     this.mediaService.create(payload).then(() => {

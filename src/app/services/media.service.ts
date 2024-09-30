@@ -18,14 +18,6 @@ export class MediaService {
     }
   }
 
-  async listByUserId(userId: string): Promise<MediaModel[]> {
-    try {
-      return await this.http.get<MediaModel[]>(`https://study-space-1beb84dc5047.herokuapp.com/medias/${userId}`).toPromise();
-    } catch (error) {
-      return Promise.reject(error);
-    }
-  }
-
   async list(): Promise<MediaModel[]> {
     try {
       return await this.http.get<MediaModel[]>('https://study-space-1beb84dc5047.herokuapp.com/medias').toPromise();
